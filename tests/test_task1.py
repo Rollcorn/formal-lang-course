@@ -1,11 +1,16 @@
 import pytest
-from project.graph_helper import get_graph_by_name, get_graph_info, export2_dot_file, build_graph_and_save_to_dot_file
+from project.graph_helper import (
+    get_graph_by_name,
+    get_graph_info,
+    export2_dot_file,
+    build_graph_and_save_to_dot_file,
+)
 from networkx import MultiDiGraph
 import networkx as nx
 
 
 def test_get_graph_by_name():
-    graph = get_graph_by_name('skos')
+    graph = get_graph_by_name("skos")
     assert isinstance(graph, MultiDiGraph)
 
 
@@ -33,13 +38,16 @@ def test_export2_dot_file(tmp_path):
     d.mkdir()
     p = d / "graph.dot"
     export2_dot_file(graph, str(p))
-    assert p.read_text() == 'digraph  {\n1;\n2;\n1 -> 2  [key=0];\n}\n'
+    assert p.read_text() == "digraph  {\n1;\n2;\n1 -> 2  [key=0];\n}\n"
 
 
 def test_build_graph_and_save_to_dot_file(tmp_path):
     d = tmp_path / "sub"
     d.mkdir()
     p = d / "graph.dot"
-    graph = build_graph_and_save_to_dot_file([1, 2], ['a', 'b'], str(p))
+    graph = build_graph_and_save_to_dot_file([1, 2], ["a", "b"], str(p))
     assert isinstance(graph, MultiDiGraph)
-    assert p.read_text() == 'digraph  {\n1;\n2;\n1 -> 2  [key=0, label=a];\n2 -> 1  [key=0, label=b];\n}\n'
+    assert (
+        p.read_text()
+        == "digraph  {\n1;\n2;\n1 -> 2  [key=0, label=a];\n2 -> 1  [key=0, label=b];\n}\n"
+    )
