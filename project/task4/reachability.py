@@ -10,6 +10,18 @@ from project.task3.finite_automaton import (
 def reachability_with_constraints(
     fa: FiniteAutomaton, constraints_fa: FiniteAutomaton
 ) -> Dict[int, Set[int]]:
+    """
+    Вычисляет достижимость состояний в КА с учетом ограничений.
+
+    Функция принимает два конечных автомата: исходный автомат и автомат ограничений.
+    Она вычисляет пересечение этих автоматов, находит транзитивное замыкание полученного
+    пересеченного автомата и определяет достижимые состояния для начальных состояний
+    исходного автомата с учетом ограничений.
+
+    Аргументы:
+    - fa (FiniteAutomaton): Исходный конечный автомат.
+    - constraints_fa (FiniteAutomaton): Конечный автомат, задающий ограничения.
+    """
     inter = intersect_automata(fa, constraints_fa, lbl=False)
 
     closure = transitive_closure(inter)
