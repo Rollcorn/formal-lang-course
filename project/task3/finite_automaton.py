@@ -12,6 +12,7 @@ class FiniteAutomaton:
     """
     Конечный автомат
     """
+
     def __init__(
         self,
         nfa: NondeterministicFiniteAutomaton = None,
