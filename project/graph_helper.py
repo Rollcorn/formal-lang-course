@@ -21,6 +21,7 @@ def get_graph_info(graph: MultiDiGraph) -> dict:
         "edges": graph.number_of_edges(),
         "nodes_list": list(graph.nodes),
         "edges_list": list(graph.edges),
+        "labels": set(nx.get_edge_attributes(graph, "label").values()),
     }
 
 

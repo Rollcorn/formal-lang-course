@@ -213,6 +213,16 @@ def transitive_closure(fa: FiniteAutomaton) -> dok_matrix:
 def paths_ends(
     graph: MultiDiGraph, start_nodes: Set[int], final_nodes: Set[int], regex: str
 ) -> List[Tuple[object, object]]:
+    """
+    По графу с заданными стартовыми и финальными вершинами и регулярному выражению вернуть те пары вершин из заданных
+    стартовых и финальных, которые связанны путём, формирующем слово из языка, задаваемого регулярным выражением.
+
+    :param graph:
+    :param start_nodes:
+    :param final_nodes:
+    :param regex:
+    :return:
+    """
     g_fa = FiniteAutomaton(graph_to_nfa(graph, start_nodes, final_nodes))
     r_fa = FiniteAutomaton(regex_to_dfa(regex))
     inters_fa = intersect_automata(g_fa, r_fa, lbl=False)
