@@ -33,12 +33,12 @@ regexp: CHAR
       | VAR
       | '(' regexp ')'
       | regexp '|' regexp
-      | regexp '^' range
+      | regexp '^' range_expr
       | regexp '.' regexp
       | regexp '&' regexp
       ;
 
-range: '[' NUM '..' NUM? ']' ;
+range_expr: '[' NUM '..' NUM? ']' ;
 
 select: v_filter? v_filter? 'return' VAR (',' VAR)? 'where' VAR 'reachable' 'from' VAR 'in' VAR 'by' expr ;
 
