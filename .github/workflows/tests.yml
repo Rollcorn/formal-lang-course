@@ -37,11 +37,12 @@ jobs:
       - name: Install ANTLR
         run: |
           curl -O https://www.antlr.org/download/antlr-4.9.2-complete.jar
-          alias antlr4='java -Xmx500M -cp "./antlr-4.9.2-complete.jar:$CLASSPATH" org.antlr.v4.Tool'
+          export CLASSPATH=".:./antlr-4.9.2-complete.jar:$CLASSPATH"
+          export PATH=".:$PATH"
 
       - name: Generate Lexer and Parser
         run: |
-          antlr4 -Dlanguage=Python3 -o ./gen progect/task11/Test.g4
+          java -Xmx500M -cp "./antlr-4.9.2-complete.jar:$CLASSPATH" org.antlr.v4.Tool -Dlanguage=Python3 -o ./gen project/task11/Test.g4
 
       - name: Run unit tests
         run: python ./scripts/run_tests.py
