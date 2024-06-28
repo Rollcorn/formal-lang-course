@@ -1,6 +1,6 @@
 from antlr4 import InputStream, CommonTokenStream
-from gen.TestLexer import TestLexer
-from gen.TestParser import TestParser
+from TestLexer import TestLexer
+from TestParser import TestParser
 from antlr4.ParserRuleContext import ParserRuleContext
 
 
