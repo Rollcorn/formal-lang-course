@@ -34,15 +34,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: ANTLR
-        run: |
-          curl -O https://www.antlr.org/download/antlr-4.9.2-complete.jar
-          echo 'java -Xmx500M -cp $(pwd)/antlr-4.9.2-complete.jar:$CLASSPATH org.antlr.v4.Tool' > /usr/local/bin/antlr4
-          chmod +x /usr/local/bin/antlr4
-
-      - name: Generate Lexer and Parser
-        run: |
-          antlr4 -Dlanguage=Python3 project/task11/Test.g4
+#      - name: ANTLR
+#        run: |
+#          curl -O https://www.antlr.org/download/antlr-4.9.2-complete.jar
+#          echo 'java -Xmx500M -cp $(pwd)/antlr-4.9.2-complete.jar:$CLASSPATH org.antlr.v4.Tool' > /usr/local/bin/antlr4
+#          chmod +x /usr/local/bin/antlr4
+#
+#      - name: Generate Lexer and Parser
+#        run: |
+#          antlr4 -Dlanguage=Python3 project/task11/Test.g4
 
       - name: Run unit tests
         run: python ./scripts/run_tests.py
